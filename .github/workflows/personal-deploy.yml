@@ -36,12 +36,14 @@ jobs:
         restore-keys: |
             ${{ runner.os }}-yarn-
             
-    - name: Install and Build 🔧
-      run: |
-        yarn install
-        yarn build
-        yarn export
-    
+  
+    - run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $1}')" >> $GITHUB_ENV
+        shell: bash
+    - run: yarn install
+    - run: yarn build
+        env: 
+          - NEXT_PUBLIC_BASE_PATH: $REPOSITORY_NAME
+    - run: yarn export
     - run: touch ./out/.nojekyll
     
     - name: Deploy 🚀
