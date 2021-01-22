@@ -1,19 +1,16 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { Box, Container } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import { Copyright } from '@material-ui/icons';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Monika Rozwadowska</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to my personal page
-        </h1>
-      </main>
-    </div>
-  )
+export default function Home(): JSX.Element {
+    return (
+        <Container maxWidth="sm">
+            <Box my={4}>
+                <Typography variant="h4" component="h1" gutterBottom>
+                    Monika Rozwadowska personal page
+                </Typography>
+                <Copyright />
+            </Box>
+        </Container>
+    );
 }
